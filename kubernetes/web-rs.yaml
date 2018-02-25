@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: web
+  labels:
+    name: web
+    app: todoapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+      - name: web 
+        image: janakiramm/todo
+        ports:
+        - containerPort: 3000
