@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: web
+  labels:
+    name: web
+    app: todoapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+      - name: web 
+        image: janakiramm/todo
+        env:
+          - name: "DBHOST"
+            value: "mongodb://todo-mongodb-replicaset-0.todo-mongodb-replicaset,todo-mongodb-replicaset-1.todo-mongodb-replicaset,todo-mongodb-replicaset-2.todo-mongodb-replicaset:27017"
+        ports:
+        - containerPort: 3000
