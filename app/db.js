@@ -1,5 +1,6 @@
 var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
+var DBHost=process.env["DBHOST"] || "db";
 
 var Todo = new Schema({
     user_id    : String,
@@ -9,4 +10,4 @@ var Todo = new Schema({
 
 mongoose.model( 'Todo', Todo );
 
-mongoose.connect( 'mongodb://db/express-todo' );
+mongoose.connect( DBHost+'/express-todo' );
